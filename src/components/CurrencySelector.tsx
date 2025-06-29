@@ -1,21 +1,39 @@
-const CurrencySelector = () => {
+interface CurrencyOptions {
+  id: number;
+  name: string;
+}
+
+interface CurrencySelectorProps {
+  options: CurrencyOptions[];
+  value: string;
+  onChange: (value: string) => void;
+  label: string;
+}
+
+const CurrencySelector = ({
+  options,
+  value,
+  onChange,
+  label,
+}: CurrencySelectorProps) => {
   return (
     <>
-      <label htmlFor="From" className="mx-2">
-        From
+      <label htmlFor={label} className="mx-2">
+        {label}
       </label>
       <select
-        id="From"
-        onChange={() => {
-          console.log("hello");
-        }}
-        aria-label=""
+        id={label}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        aria-label={`Select ${label.toLowerCase()} currency`}
         className="select"
         defaultValue="Pick a currency"
       >
-        <option disabled={true}>Pick a currency</option>
-        <option>Pounds</option>
-        <option>Dollars</option>
+        {options.map((option) => (
+          <option key={option.id} value={option.name}>
+            {option.name}
+          </option>
+        ))}
       </select>
     </>
   );
