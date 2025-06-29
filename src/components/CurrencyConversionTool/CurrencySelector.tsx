@@ -1,6 +1,7 @@
 interface CurrencyOptions {
   id: number;
   name: string;
+  code: string;
 }
 
 interface CurrencySelectorProps {
@@ -17,7 +18,7 @@ const CurrencySelector = ({
   label,
 }: CurrencySelectorProps) => {
   return (
-    <>
+    <div className="flex">
       <label htmlFor={label} className="mx-2">
         {label}
       </label>
@@ -29,41 +30,14 @@ const CurrencySelector = ({
         className="select"
         defaultValue="Pick a currency"
       >
-        {options.map((option) => (
-          <option key={option.id} value={option.name}>
-            {option.name}
+        {options.map(({ id, name, code }) => (
+          <option key={id} value={code}>
+            ({code}) {name}
           </option>
         ))}
       </select>
-    </>
+    </div>
   );
 };
 
 export default CurrencySelector;
-
-// sample model data
-
-// "0": {
-//     "id": 1,
-//     "name": "UAE Dirham",
-//     "short_code": "AED",
-//     "code": "784",
-//     "precision": 2,
-//     "subunit": 100,
-//     "symbol": "د.إ",
-//     "symbol_first": true,
-//     "decimal_mark": ".",
-//     "thousands_separator": ","
-// },
-// "1": {
-//     "id": 2,
-//     "name": "Afghani",
-//     "short_code": "AFN",
-//     "code": "971",
-//     "precision": 2,
-//     "subunit": 100,
-//     "symbol": "؋",
-//     "symbol_first": false,
-//     "decimal_mark": ".",
-//     "thousands_separator": ","
-// },
