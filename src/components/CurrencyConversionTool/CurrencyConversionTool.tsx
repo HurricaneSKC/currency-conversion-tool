@@ -10,8 +10,16 @@ const CurrencyConversionTool = () => {
   const [to, setTo] = useState<string>("USD");
   const [amount, setAmount] = useState<number>(1);
 
-  const { data: currencies } = useCurrencies();
-  const { data: convertedAmount } = useConvertedAmount(from, to, amount);
+  const {
+    data: currencies,
+    error: currencyError,
+    isLoading: isLoadingCurrency,
+  } = useCurrencies();
+  const {
+    data: convertedAmount,
+    error: conversionError,
+    isLoading: isLoadingConversion,
+  } = useConvertedAmount(from, to, amount);
 
   const currencyOptions = currencies?.map((currency) => ({
     id: currency.id,
@@ -31,6 +39,14 @@ const CurrencyConversionTool = () => {
       <div className="card-body">
         <h1 className="py-10 text-4xl">Currency Conversion Tool</h1>
         <div className="flex flex-col gap-2 mt-2">
+          {isLoadingCurrency && (
+            <p className="text-center">Loading currencies...</p>
+          )}
+          {currencyError && (
+            <p className="text-red-600">
+              Error loading currencies: {currencyError.message}
+            </p>
+          )}
           <CurrencySelector
             options={currencyOptions || []}
             value={from}
@@ -60,7 +76,17 @@ const CurrencyConversionTool = () => {
           </div>
         </div>
         <p className="text-2xl mt-4">
-          Result: {convertedAmount?.toFixed(2)} {to}
+          {isLoadingConversion && <p>converting...</p>}
+          {conversionError && (
+            <p className="text-red-600">
+              Conversion error: {conversionError.message}
+            </p>
+          )}
+          {!isLoadingConversion && !conversionError && (
+            <p>
+              Result: {convertedAmount?.toFixed(2)} {to}
+            </p>
+          )}
         </p>
       </div>
     </div>
