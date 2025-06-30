@@ -38,6 +38,9 @@ const CurrencyConversionTool = () => {
     <div className="card">
       <div className="card-body">
         <h1 className="py-6 text-4xl">Currency Conversion Tool</h1>
+        <h2 className="py-2 text-xl">
+          Select the currencies you would like to convert from and to
+        </h2>
         <div className="flex flex-col gap-2 mt-2">
           {isLoadingCurrency && (
             <p className="text-center">Loading currencies...</p>
@@ -78,7 +81,7 @@ const CurrencyConversionTool = () => {
             </div>
           </div>
         </div>
-        <p className="text-2xl mt-4">
+        <p className="text-xl mt-4">
           {isLoadingConversion && <p>converting...</p>}
           {conversionError && (
             <p className="text-red-600">
