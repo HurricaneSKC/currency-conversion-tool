@@ -37,7 +37,7 @@ const CurrencyConversionTool = () => {
   return (
     <div className="card">
       <div className="card-body">
-        <h1 className="py-10 text-4xl">Currency Conversion Tool</h1>
+        <h1 className="py-6 text-4xl">Currency Conversion Tool</h1>
         <div className="flex flex-col gap-2 mt-2">
           {isLoadingCurrency && (
             <p className="text-center">Loading currencies...</p>
@@ -61,18 +61,21 @@ const CurrencyConversionTool = () => {
           />
           <div className="flex items-center">
             <label htmlFor="currency" className="w-12 mx-2">
-              Input
+              {from}
             </label>
-            <input
-              id="currency"
-              name="currency"
-              type="number"
-              value={amount}
-              onChange={handleAmountChange}
-              min="0"
-              aria-label="Amount to convert"
-              className="input"
-            />
+            <div>
+              <input
+                id="currency"
+                name="currency"
+                type="number"
+                value={amount}
+                onChange={handleAmountChange}
+                min="0"
+                aria-label="Amount to convert"
+                className="input"
+              />
+              <p className="text-xs">Enter amount to convert</p>
+            </div>
           </div>
         </div>
         <p className="text-2xl mt-4">
