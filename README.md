@@ -8,7 +8,7 @@ To run locally you will require an API key from free API resource: [https://curr
 
 To run locally 
 
-Use Node v 20.12 or above 
+Use Node v 20.12 or above, if any issues use latest LTS https://nodejs.org/en/download
 ```
 git clone https://github.com/HurricaneSKC/currency-conversion-tool.git 
 ```
