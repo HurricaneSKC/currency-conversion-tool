@@ -18,8 +18,8 @@ const CurrencySelector = ({
   label,
 }: CurrencySelectorProps) => {
   return (
-    <div className="flex">
-      <label htmlFor={label} className="mx-2">
+    <div className="flex items-center">
+      <label htmlFor={label} className="mx-2 w-12">
         {label}
       </label>
       <select
