@@ -28,7 +28,6 @@ const CurrencySelector = ({
         onChange={(e) => onChange(e.target.value)}
         aria-label={`Select ${label.toLowerCase()} currency`}
         className="select"
-        defaultValue="Pick a currency"
       >
         {options.map(({ id, name, code }) => (
           <option key={id} value={code}>
